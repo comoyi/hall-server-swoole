@@ -1,0 +1,17 @@
+{
+    "name": "comoyi/swoole-hall",
+    "description": "A swoole project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Chi",
+            "email": "chicong@outlook.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Comoyi\\Hall\\": "app/"
+        }
+    }
+}
