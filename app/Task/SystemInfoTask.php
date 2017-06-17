@@ -16,7 +16,8 @@ class SystemInfoTask extends Task
         $server->tick(5000, function () use ($server) {
             // 使用信息
             echo PHP_EOL;
-            echo '+------------- info --------------', PHP_EOL;
+            echo '+---------- system info -----------', PHP_EOL;
+            echo '| current timestamp:     ' . time(), PHP_EOL;
             echo '| client quantity:       ' . count($server->connections), PHP_EOL;
             echo '| memory_get_peak_usage: ', number_format(memory_get_peak_usage() / 1024, 2), 'K', PHP_EOL;
             echo '| memory_get_usage:      ', number_format(memory_get_usage() / 1024, 2), 'K', PHP_EOL;
@@ -29,7 +30,7 @@ class SystemInfoTask extends Task
             $sendQueueSize = container('sendQueue')->size();
             echo "| sendQueue size:        {$sendQueueSize}", PHP_EOL;
 
-            echo '+---------------------------------', PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL;
+            echo '+----------------------------------', PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL;
         });
     }
 }
