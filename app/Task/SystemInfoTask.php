@@ -2,6 +2,10 @@
 
 namespace Comoyi\Hall\Task;
 
+use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Helper\TableCell;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
 class SystemInfoTask extends Task
 {
 
@@ -13,24 +17,46 @@ class SystemInfoTask extends Task
     function run()
     {
         $server = container('server');
-        $server->tick(5000, function () use ($server) {
+        $server->tick(5000, function ($tickId) use ($server) {
             // 使用信息
-            echo PHP_EOL;
-            echo '+---------- system info -----------', PHP_EOL;
-            echo '| current timestamp:     ' . time(), PHP_EOL;
-            echo '| client quantity:       ' . count($server->connections), PHP_EOL;
-            echo '| memory_get_peak_usage: ', number_format(memory_get_peak_usage() / 1024, 2), 'K', PHP_EOL;
-            echo '| memory_get_usage:      ', number_format(memory_get_usage() / 1024, 2), 'K', PHP_EOL;
-
-            // receive queue info
-            $receiveQueueSize = container('receiveQueue')->size();
-            echo "| receiveQueue size:     {$receiveQueueSize}", PHP_EOL;
-
-            // send queue info
-            $sendQueueSize = container('sendQueue')->size();
-            echo "| sendQueue size:        {$sendQueueSize}", PHP_EOL;
-
-            echo '+----------------------------------', PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL;
+            $table = new Table(new ConsoleOutput());
+            $table
+                ->setHeaders([
+                    [
+                        new TableCell('system info', [
+                            'colspan' => 2,
+                        ]),
+                    ],
+                ])
+                ->addRow([
+                    'current time',
+                    date('Y-m-d H:i:s'),
+                ])
+                ->addRow([
+                    'current timestamp',
+                    time(),
+                ])
+                ->addRow([
+                    'client quantity',
+                    count($server->connections),
+                ])
+                ->addRow([
+                    'memory_get_peak_usage',
+                    number_format(memory_get_peak_usage() / 1024, 2) . 'K',
+                ])
+                ->addRow([
+                    'memory_get_usa中ge',
+                    number_format(memory_get_usage() / 1024, 2) . 'K'
+                ])
+                ->addRow([
+                    'receiveQueue size',
+                    container('receiveQueue')->size(),
+                ])
+                ->addRow([
+                    'sendQueue size',
+                    container('sendQueue')->size(),
+                ]);
+            $table->render();
         });
     }
 }

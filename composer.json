@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "comoyi/redis": "^2.1"
+        "comoyi/redis": "^2.1",
+        "symfony/console": "^3.3"
     },
     "autoload": {
         "psr-4": {
