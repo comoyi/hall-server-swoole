@@ -59,11 +59,12 @@ class Gate
 
             // 使用信息
             echo PHP_EOL;
-            echo '+------------- info --------------', PHP_EOL;
+            echo '+-------------- info --------------', PHP_EOL;
+            echo '| current timestamp:     ' . time(), PHP_EOL;
             echo '| client quantity:       ' . count($server->connections), PHP_EOL;
             echo '| memory_get_peak_usage: ', number_format(memory_get_peak_usage() / 1024, 2), 'K', PHP_EOL;
             echo '| memory_get_usage:      ', number_format(memory_get_usage() / 1024, 2), 'K', PHP_EOL;
-            echo '+---------------------------------', PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL;
+            echo '+----------------------------------', PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL, PHP_EOL;
         });
 
         // client端开连接
