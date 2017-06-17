@@ -8,10 +8,18 @@
             "email": "chicong@outlook.com"
         }
     ],
-    "require": {},
+    "require": {
+        "comoyi/redis": "^2.1"
+    },
     "autoload": {
         "psr-4": {
             "Comoyi\\Hall\\": "app/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "eaglewu/swoole-ide-helper": "dev-master"
     }
 }

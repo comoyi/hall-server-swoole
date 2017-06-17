@@ -1,0 +1,90 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "2b0be33135235b07f4356b3ae5cb1469",
+    "packages": [
+        {
+            "name": "comoyi/redis",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/comoyi/redis.git",
+                "reference": "1c9313ce49e17b141dd87b900457b159f554f065"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/comoyi/redis/zipball/1c9313ce49e17b141dd87b900457b159f554f065",
+                "reference": "1c9313ce49e17b141dd87b900457b159f554f065",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Comoyi\\Redis\\": "src/Redis/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Chi",
+                    "email": "chicong@outlook.com"
+                }
+            ],
+            "description": "A redis class",
+            "keywords": [
+                "redis"
+            ],
+            "time": "2017-04-05T13:34:45+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "eaglewu/swoole-ide-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eaglewu/swoole-ide-helper.git",
+                "reference": "ac3d64faffa0dcd7a44a98c6aee6b2b4c438adda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eaglewu/swoole-ide-helper/zipball/ac3d64faffa0dcd7a44a98c6aee6b2b4c438adda",
+                "reference": "ac3d64faffa0dcd7a44a98c6aee6b2b4c438adda",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swoole\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "soul11201",
+                    "email": "soul11201@gmail.com"
+                }
+            ],
+            "description": "Swoole 在IDE下自动识别类、函数、宏，自动补全函数名",
+            "time": "2017-05-24T02:49:53+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "eaglewu/swoole-ide-helper": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
