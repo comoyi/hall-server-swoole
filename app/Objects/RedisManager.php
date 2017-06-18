@@ -35,47 +35,7 @@ class RedisManager
             return static::getPool($db);
         }
 
-        $redisConf = [
-            'host' => config('redis_host'),
-            'port' => config('redis_port')
-        ];
-
-        $redisConfig = [
-            'type' => 'direct', // direct: 直连, sentinel: 由sentinel决定host与port
-            'password' => '', // redis auth 密码
-            'master_name' => 'mymaster', // master name
-            'direct' => [
-                'masters' => [
-                    [
-                        'host' => $redisConf['host'],
-                        'port' => $redisConf['port']
-                    ]
-                ],
-                'slaves' => [
-                    [
-                        'host' => $redisConf['host'],
-                        'port' => $redisConf['port']
-                    ],
-                    [
-                        'host' => $redisConf['host'],
-                        'port' => $redisConf['port']
-                    ]
-                ],
-            ],
-            'sentinel' => [
-                'sentinels' => [
-                    [
-                        'host' => '127.0.0.1',
-                        'port' => '5000'
-                    ],
-                    [
-                        'host' => '127.0.0.1',
-                        'port' => '5001'
-                    ]
-                ]
-
-            ]
-        ];
+        $redisConfig = config('redis');
         $redis = new RedisClient($redisConfig);
         $redis->select($db);
         static::setPool($db, $redis);

@@ -9,14 +9,19 @@
         }
     ],
     "require": {
+        "php": ">=5.6",
         "comoyi/redis": "^2.1",
-        "symfony/console": "^3.3"
+        "symfony/console": "^3.3",
+        "illuminate/config": "^5.4",
+        "illuminate/filesystem": "^5.4",
+        "vlucas/phpdotenv": "^2.4"
     },
     "autoload": {
         "psr-4": {
             "Comoyi\\Hall\\": "app/"
         },
         "files": [
+            "app/constant.php",
             "app/helpers.php"
         ]
     },

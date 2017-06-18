@@ -2,6 +2,9 @@
 
 namespace Comoyi\Hall\Objects;
 
+use Comoyi\Hall\Config;
+use Comoyi\Hall\Env;
+
 class App
 {
     /**
@@ -18,7 +21,6 @@ class App
         $classes = [
 
             // system
-            'config' => \Comoyi\Hall\Objects\Config::class, // 配置
             'packet' => \Comoyi\Hall\Objects\Packet::class, // 消息包
             'receiver' => \Comoyi\Hall\Objects\Receiver::class, // 接收者
             'sender' => \Comoyi\Hall\Objects\Sender::class, // 发送者
@@ -41,6 +43,13 @@ class App
             'GlobalMessage' => \Comoyi\Hall\Objects\Send\GlobalMessageHandler::class, // 全局消息
             'Login' => \Comoyi\Hall\Objects\Send\LoginHandler::class, // login
         ];
+
+
+        container('env', new Env());
+        container('env')->loadEnvConfig(realpath(__DIR__ . '/../../'));
+
+        container('config', new Config());
+        container('config')->loadConfigFiles(realpath(__DIR__ . '/../../config'));
 
         // 创建对象添加到容器
         foreach ($classes as $alias => $class) {
