@@ -49,7 +49,7 @@ class LoginHandler extends ReceiveHandler
         // 生成用户对应token
         $token = uniqid();
         // 存储token与用户对应关系
-        $redisKey = handle_redis_key('token:user_id:' . $userId);
+        $redisKey = 'token:user_id:' . $userId;
         $redis = container('redis');
 
         // 先移除改用户之前已经存在多token信息防止redis中垃圾太多
@@ -62,7 +62,7 @@ class LoginHandler extends ReceiveHandler
         ]);
         $redis->expire($redisKey, 3600 * 24 * 30);
 
-        $redisKey = handle_redis_key('token:' . $token);
+        $redisKey = 'token:' . $token;
         $redis->set($redisKey, $userId, ['ex' => 3600 * 24 * 30]);
 
         $client = new Client();

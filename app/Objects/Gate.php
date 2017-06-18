@@ -16,7 +16,7 @@ class Gate
      */
     public function start()
     {
-        $server = new SwooleWebsocketServer(WEBSOCKET_HOST, WEBSOCKET_PORT);
+        $server = new SwooleWebsocketServer(config('server.websocket.host'), config('server.websocket.port'));
 
         // 添加到容器
         container('server', $server);
