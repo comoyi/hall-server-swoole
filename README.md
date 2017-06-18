@@ -2,6 +2,8 @@
 
 #### Installation
 ```
+mv .env.sample .env
+
 composer install
 ```
 
