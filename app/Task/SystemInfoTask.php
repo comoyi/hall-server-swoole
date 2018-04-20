@@ -11,8 +11,6 @@ class SystemInfoTask extends Task
 
     /**
      * run
-     *
-     * @return mixed
      */
     function run()
     {

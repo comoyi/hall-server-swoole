@@ -2,6 +2,7 @@
 
 namespace Comoyi\Hall\Objects;
 
+use Comoyi\Hall\Model\Message;
 use Comoyi\Hall\Task\SystemInfoTask;
 use Swoole\Websocket\Server as SwooleWebsocketServer;
 
@@ -27,64 +28,128 @@ class Gate
             'task_worker_num' => 5,
         ]);
 
-        // 服务开启
-        $server->on('start', function ($server) {
-            echo '[' . date('Y-m-d H:i:s') . ']' . ' server started!' . PHP_EOL;
-            echo "[master pid: {$server->master_pid}] [manager pid: {$server->manager_pid}]" . PHP_EOL;
-        });
+        // start
+        $server->on('start', [$this, 'onStart']);
 
-        $server->on('workerStart', function ($server, $workerId) {
-            echo '[' . date('Y-m-d H:i:s') . ']' . " worker started! [id: {$workerId}]" . PHP_EOL;
-
-            if (0 == $workerId) {
-                $server->task('system-info');
-            }
-        });
+        // worker start
+        $server->on('workerStart', [$this, 'onWorkerStart']);
 
         // client连接
-        $server->on('open', function ($server, $request) {
-            echo "client-{$request->fd} connected success." . PHP_EOL;
-            foreach ($server->connections as $connection) {
-                container('packet')->send($connection, [
-                    'cmd' => 'GlobalMessage',
-                    'msg' => $request->fd . ' connected success.'
-                ]);
-            }
-        });
+        $server->on('open', [$this, 'onOpen']);
 
         // 收到消息
-        $server->on('message', function ($server, $frame) {
-            // 例 $frame->data {"packageId":"","clientId":"","packageType":"","token":"","data":[{"cmd":"ping"},{"cmd":"login","username":"user-1","password":"pwd-1"}]}
-            container('packet')->receive($frame);
-        });
+        $server->on('message', [$this, 'onMessage']);
 
-        // client端开连接
-        $server->on('close', function ($server, $fd) {
-            foreach ($server->connections as $connection) {
-                container('packet')->send($connection, [
-                    'cmd' => 'GlobalMessage',
-                    'msg' => $fd . ' closed'
-                ]);
-            }
-            echo "client-{$fd} is closed" . PHP_EOL;
-        });
+        // client断开连接
+        $server->on('close', [$this, 'onClose']);
 
-        //处理异步任务
-        $server->on('task', function ($server, $taskId, $fromId, $data) {
-            if ($data == 'system-info') {
-                $task = new SystemInfoTask();
-                $task->run();
-            }
-            $server->finish($data);
-        });
+        //处理task
+        $server->on('task', [$this, 'onTask']);
 
-        //处理异步任务的结果
-        $server->on('finish', function ($server, $taskId, $data) {
-            echo "AsyncTask[$taskId] Finish: ", PHP_EOL;
-            echo var_dump($data), PHP_EOL;
-        });
+        //完成task
+        $server->on('finish', [$this, 'onFinish']);
 
+        // 开启服务
         $server->start();
     }
 
+    /**
+     * @param $server
+     */
+    public function onStart(SwooleWebsocketServer $server)
+    {
+        echo '[' . date('Y-m-d H:i:s') . ']' . ' server started!' . PHP_EOL .
+            "[master pid: {$server->master_pid}] [manager pid: {$server->manager_pid}]" . PHP_EOL;
+    }
+
+    /**
+     * @param $server
+     * @param $workerId
+     */
+    public function onWorkerStart(SwooleWebsocketServer $server, $workerId)
+    {
+        echo '[' . date('Y-m-d H:i:s') . ']' . " worker started! [id: {$workerId}]" . PHP_EOL;
+
+        if (0 == $workerId) {
+            $server->task('system-info');
+        }
+    }
+
+    /**
+     * @param $server
+     * @param $request
+     */
+    public function onOpen(SwooleWebsocketServer $server, $request)
+    {
+        echo "client-{$request->fd} connected success." . PHP_EOL;
+
+        foreach ($server->connections as $connection) {
+            container('packet')->send($connection, [
+                'cmd' => 'GlobalMessage',
+                'msg' => [
+                    'type' => Message::TYPE_TEXT,
+                    'content' => "client-{$request->fd} connected success.",
+                ],
+            ]);
+        }
+    }
+
+    /**
+     * @param $server
+     * @param $frame
+     */
+    public function onMessage(SwooleWebsocketServer $server, $frame)
+    {
+        // 例 $frame->data {"packageId":"","clientId":"","packageType":"","token":"","data":[{"cmd":"ping"},{"cmd":"login","username":"user-1","password":"pwd-1"}]}
+        container('packet')->receive($frame);
+    }
+
+    /**
+     * @param $server
+     * @param $fd
+     */
+    public function onClose(SwooleWebsocketServer $server, $fd)
+    {
+        echo "client-{$fd} is closed" . PHP_EOL;
+
+        foreach ($server->connections as $connection) {
+            container('packet')->send($connection, [
+                'cmd' => 'GlobalMessage',
+                'msg' => [
+                    'type' => Message::TYPE_TEXT,
+                    'content' => "client-{$fd} closed.",
+                ],
+            ]);
+        }
+    }
+
+    /**
+     * @param $server
+     * @param $taskId
+     * @param $fromId
+     * @param $data
+     */
+    public function onTask(SwooleWebsocketServer $server, $taskId, $fromId, $data)
+    {
+        echo "task start [task id: {$taskId}]" . PHP_EOL;
+
+        if ($data == 'system-info') {
+            $task = new SystemInfoTask();
+            $task->run();
+        }
+
+        echo "task finished [task id: {$taskId}]" . PHP_EOL;
+
+        $server->finish($data);
+    }
+
+    /**
+     * @param $server
+     * @param $taskId
+     * @param $data
+     */
+    public function onFinish(SwooleWebsocketServer $server, $taskId, $data)
+    {
+        echo "async task finished [task id: {$taskId}]." . PHP_EOL . 'task data: ' . var_export($data, true) . PHP_EOL;
+    }
 }

@@ -24,7 +24,7 @@ class Packet
 //        }
 
         // TODO 通过队列
-        container('receiveQueue')->push(json_encode($frame->data));
+//        container('receiveQueue')->push(json_encode($frame->data));
 
         $body = json_decode($frame->data, true);
 
@@ -65,7 +65,7 @@ class Packet
         }
 
         // TODO 通过队列发送
-        container('sendQueue')->push(json_encode($packetData));
+//        container('sendQueue')->push(json_encode($packetData));
 
         container('server')->push($fd, json_encode($packetData));
     }
