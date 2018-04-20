@@ -4,6 +4,8 @@ namespace Comoyi\Hall\Objects;
 
 use Comoyi\Hall\Config;
 use Comoyi\Hall\Env;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 class App
 {
@@ -45,11 +47,18 @@ class App
         ];
 
 
+        // env
         container('env', new Env());
         container('env')->loadEnvConfig(realpath(__DIR__ . '/../../'));
 
+        // config
         container('config', new Config());
         container('config')->loadConfigFiles(realpath(__DIR__ . '/../../config'));
+
+        // 日志
+        $log = new Logger('app');
+        $log->pushHandler(new StreamHandler(config('log.path'), Logger::DEBUG));
+        container('log', $log);
 
         // 创建对象添加到容器
         foreach ($classes as $alias => $class) {

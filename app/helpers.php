@@ -11,7 +11,7 @@ use Comoyi\Hall\Objects\Container;
  */
 function config($key = null, $default = null)
 {
-    $config = \container('config');
+    $config = container('config');
     if (is_null($key)) {
         return $config;
     }
