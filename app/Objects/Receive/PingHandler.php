@@ -3,6 +3,8 @@
 namespace Comoyi\Hall\Objects\Receive;
 
 use Comoyi\Hall\Factory\SendMsgFactory;
+use Comoyi\Hall\Models\CmdSend;
+use Comoyi\Hall\Models\CmdRecv;
 use Comoyi\Hall\Objects\Msg;
 
 /**
@@ -10,6 +12,10 @@ use Comoyi\Hall\Objects\Msg;
  */
 class PingHandler extends ReceiveHandler
 {
+    /**
+     * cmd
+     */
+    protected $cmd = CmdRecv::PING;
 
     /**
      * handle
@@ -19,6 +25,6 @@ class PingHandler extends ReceiveHandler
      */
     public function handle(Msg $msg)
     {
-        container('sender')->handle(SendMsgFactory::create(CMD_SEND_PONG, [], $msg->getFd()));
+        container('sender')->handle(SendMsgFactory::create(CmdSend::PONG, [], $msg->getFd()));
     }
 }

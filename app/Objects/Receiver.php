@@ -2,6 +2,8 @@
 
 namespace Comoyi\Hall\Objects;
 
+use Comoyi\Hall\Exceptions\RecvCmdDuplicateException;
+use Comoyi\Hall\Models\CmdRecv;
 use Comoyi\Hall\Objects\Receive\ReceiveHandler;
 
 /**
@@ -25,9 +27,9 @@ class Receiver
      */
     protected $cmdMap = [
         // 外 => 内
-        'Ping' => 'Ping',
-        'Login' => 'Login',
-        'GlobalMessage' => 'GlobalMessage',
+//        'Ping' => CmdRecv::PING,
+//        'Login' => CmdRecv::LOGIN,
+        'GlobalMessage' => CmdRecv::GLOBAL_MESSAGE,
     ];
 
     /**
@@ -72,11 +74,17 @@ class Receiver
     /**
      * 添加成员
      *
-     * @param $alias
      * @param ReceiveHandler $handler
+     * @throws RecvCmdDuplicateException
      */
-    public function add($alias, ReceiveHandler $handler)
+    public function add(ReceiveHandler $handler)
     {
+        $alias = $handler->getCmd();
+        if (isset($this->handlers[$alias])) {
+            $currentClass = get_class($handler);
+            $class = get_class($this->handlers[$alias]);
+            throw new RecvCmdDuplicateException("Recv cmd duplicated [currentClass: {$currentClass}] [cmd: {$alias}] already used by [class: {$class}].");
+        }
         $this->handlers[$alias] = $handler;
     }
 

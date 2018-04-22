@@ -2,6 +2,7 @@
 
 namespace Comoyi\Hall\Objects\Send;
 
+use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Objects\Msg;
 
 /**
@@ -9,6 +10,11 @@ use Comoyi\Hall\Objects\Msg;
  */
 class PongHandler extends SendHandler
 {
+
+    /**
+     * cmd
+     */
+    protected $cmd = CmdSend::PONG;
 
     /**
      * handle
@@ -19,7 +25,7 @@ class PongHandler extends SendHandler
     public function handle(Msg $msg)
     {
         $data = [
-            KEY_CMD => CMD_SEND_PONG
+            CmdSend::CMD => CmdSend::PONG,
         ];
         container('packet')->send($msg->getFd(), $data);
     }

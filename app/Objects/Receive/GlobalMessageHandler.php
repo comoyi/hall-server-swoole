@@ -3,6 +3,8 @@
 namespace Comoyi\Hall\Objects\Receive;
 
 use Comoyi\Hall\Factory\SendMsgFactory;
+use Comoyi\Hall\Models\CmdSend;
+use Comoyi\Hall\Models\CmdRecv;
 use Comoyi\Hall\Objects\Msg;
 
 /**
@@ -10,6 +12,10 @@ use Comoyi\Hall\Objects\Msg;
  */
 class GlobalMessageHandler extends ReceiveHandler
 {
+    /**
+     * cmd
+     */
+    protected $cmd = CmdRecv::GLOBAL_MESSAGE;
 
     /**
      * handle
@@ -19,8 +25,8 @@ class GlobalMessageHandler extends ReceiveHandler
      */
     public function handle(Msg $msg)
     {
-        container('sender')->handle(SendMsgFactory::create(CMD_SEND_GLOBAL_MESSAGE, [
-            'msg' => $msg->getData()['msg']
+        container('sender')->handle(SendMsgFactory::create(CmdSend::GLOBAL_MESSAGE, [
+            'msg' => $msg->getData()['msg'],
         ], $msg->getFd()));
     }
 }

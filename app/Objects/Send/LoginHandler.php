@@ -2,6 +2,7 @@
 
 namespace Comoyi\Hall\Objects\Send;
 
+use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Objects\Msg;
 
 /**
@@ -9,6 +10,11 @@ use Comoyi\Hall\Objects\Msg;
  */
 class LoginHandler extends SendHandler
 {
+
+    /**
+     * cmd
+     */
+    protected $cmd = CmdSend::LOGIN;
 
     /**
      * handle
@@ -19,7 +25,7 @@ class LoginHandler extends SendHandler
     public function handle(Msg $msg)
     {
         $data = $msg->getData();
-        $data[KEY_CMD] = CMD_SEND_LOGIN;
+        $data[CmdSend::CMD] = CmdSend::LOGIN;
         container('packet')->send($msg->getFd(), $data);
     }
 }

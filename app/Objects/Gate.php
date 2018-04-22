@@ -2,7 +2,7 @@
 
 namespace Comoyi\Hall\Objects;
 
-use Comoyi\Hall\Model\Message;
+use Comoyi\Hall\Models\Message;
 use Comoyi\Hall\Task\SystemInfoTask;
 use Swoole\Websocket\Server as SwooleWebsocketServer;
 
