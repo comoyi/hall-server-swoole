@@ -63,16 +63,24 @@ class Gate
     }
 
     /**
+     * onWorkerStart
+     *
+     * 注：reload的时候只有include/require进来的会重新加载，直接写在里面的代码修改后并不会生效
+     *
      * @param $server
      * @param $workerId
      */
     public function onWorkerStart(SwooleWebsocketServer $server, $workerId)
     {
-        echo '[' . date('Y-m-d H:i:s') . ']' . " worker started! [id: {$workerId}]" . PHP_EOL;
-
-        if (0 == $workerId) {
-            $server->task('system-info');
+        $workerStr = 'worker';
+        if ($server->taskworker) {
+            $workerStr = 'task worker';
         }
+        echo '[' . date('Y-m-d H:i:s') . ']' . " {$workerStr} started! [id: {$workerId}]" . PHP_EOL;
+
+//        if (0 == $workerId) {
+//            $server->task('system-info');
+//        }
     }
 
     /**
