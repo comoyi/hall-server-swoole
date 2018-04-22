@@ -2,6 +2,7 @@
 
 namespace Comoyi\Hall\Objects\Send;
 
+use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Objects\Msg;
 
 /**
@@ -9,6 +10,11 @@ use Comoyi\Hall\Objects\Msg;
  */
 class GlobalMessageHandler extends SendHandler
 {
+
+    /**
+     * cmd
+     */
+    protected $cmd = CmdSend::GLOBAL_MESSAGE;
 
     /**
      * handle
@@ -20,8 +26,9 @@ class GlobalMessageHandler extends SendHandler
     {
         $server = container('server');
         $data = [
-            KEY_CMD => CMD_SEND_GLOBAL_MESSAGE,
-            'msg' => $msg->getData()['msg']
+            CmdSend::CMD => CmdSend::GLOBAL_MESSAGE,
+//            CmdSend::CMD => container('sender')->getExternalCmd(CmdSend::GLOBAL_MESSAGE),
+            'msg' => $msg->getData()['msg'],
         ];
 
         // 发送给所有客户端

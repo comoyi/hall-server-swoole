@@ -4,6 +4,8 @@ namespace Comoyi\Hall\Objects\Receive;
 
 use Comoyi\Hall\Factory\SendMsgFactory;
 use Comoyi\Hall\Logic\UserLogic;
+use Comoyi\Hall\Models\CmdSend;
+use Comoyi\Hall\Models\CmdRecv;
 use Comoyi\Hall\Objects\Client;
 use Comoyi\Hall\Objects\Msg;
 use Comoyi\Hall\Objects\User;
@@ -13,6 +15,10 @@ use Comoyi\Hall\Objects\User;
  */
 class LoginHandler extends ReceiveHandler
 {
+    /**
+     * cmd
+     */
+    protected $cmd = CmdRecv::LOGIN;
 
     /**
      * handle
@@ -33,7 +39,7 @@ class LoginHandler extends ReceiveHandler
             // 发送消息 登录失败
             container('sender')->handle(SendMsgFactory::create($msg->getCmd(), [
                 'code' => 1,
-                'msg' => '帐号或密码错误'
+                'msg' => '帐号或密码错误',
             ], $msg->getFd()));
 
             return;
@@ -70,7 +76,7 @@ class LoginHandler extends ReceiveHandler
         $client->setUser($user);
         container('clientList')->add($client);
 
-        container('sender')->handle(SendMsgFactory::create(CMD_SEND_LOGIN, [
+        container('sender')->handle(SendMsgFactory::create(CmdSend::LOGIN, [
             'code' => 0,
             'userID' => $userId,
             'token' => $token

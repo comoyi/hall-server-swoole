@@ -11,12 +11,12 @@ use Comoyi\Hall\Objects\Msg;
 abstract class ReceiveHandler implements ReceiveMessageHandlerInterface
 {
 
-//    /**
-//     * cmd
-//     *
-//     * @var string
-//     */
-//    protected $cmd = '';
+    /**
+     * cmd
+     *
+     * @var string
+     */
+    protected $cmd = '';
 
     /**
      * handle
@@ -26,12 +26,11 @@ abstract class ReceiveHandler implements ReceiveMessageHandlerInterface
      */
     abstract public function handle(Msg $msg);
 
-//    /**
-//     * @return string
-//     */
-//    public function getCmd() {
-//        return $this->cmd;
-//    }
-
+    /**
+     * @return string
+     */
+    public function getCmd() {
+        return $this->cmd;
+    }
 
 }

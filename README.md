@@ -2,7 +2,7 @@
 
 #### Installation
 ```
-mv .env.sample .env
+cp .env.example .env
 
 composer install
 ```

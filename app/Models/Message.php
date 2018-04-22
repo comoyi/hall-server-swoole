@@ -1,7 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Model;
-
+namespace Comoyi\Hall\Models;
 
 class Message
 {

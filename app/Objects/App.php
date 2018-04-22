@@ -14,7 +14,7 @@ class App
      */
     public function start()
     {
-        echo 'start', PHP_EOL;
+        echo 'start' . PHP_EOL;
 
         // 设置时区
         date_default_timezone_set('Asia/Shanghai');
@@ -34,16 +34,16 @@ class App
 
         // 接收处理
         $receiveHandlers = [
-            'Ping' => \Comoyi\Hall\Objects\Receive\PingHandler::class, // ping
-            'Login' => \Comoyi\Hall\Objects\Receive\LoginHandler::class, // 登录
-            'GlobalMessage' => \Comoyi\Hall\Objects\Receive\GlobalMessageHandler::class, // 全局消息
+            \Comoyi\Hall\Objects\Receive\PingHandler::class, // ping
+            \Comoyi\Hall\Objects\Receive\LoginHandler::class, // 登录
+            \Comoyi\Hall\Objects\Receive\GlobalMessageHandler::class, // 全局消息
         ];
 
         // 发送处理
         $sendHandlers = [
-            'Pong' => \Comoyi\Hall\Objects\Send\PongHandler::class, // pong
-            'GlobalMessage' => \Comoyi\Hall\Objects\Send\GlobalMessageHandler::class, // 全局消息
-            'Login' => \Comoyi\Hall\Objects\Send\LoginHandler::class, // login
+            \Comoyi\Hall\Objects\Send\PongHandler::class, // pong
+            \Comoyi\Hall\Objects\Send\GlobalMessageHandler::class, // 全局消息
+            \Comoyi\Hall\Objects\Send\LoginHandler::class, // login
         ];
 
 
@@ -66,13 +66,13 @@ class App
         }
 
         // 接收处理
-        foreach ($receiveHandlers as $alias => $handler) {
-            container('receiver')->add($alias, new $handler);
+        foreach ($receiveHandlers as $handler) {
+            container('receiver')->add(new $handler);
         }
 
         // 发送处理
-        foreach ($sendHandlers as $alias => $handler) {
-            container('sender')->add($alias, new $handler);
+        foreach ($sendHandlers as $handler) {
+            container('sender')->add(new $handler);
         }
 
         // redis

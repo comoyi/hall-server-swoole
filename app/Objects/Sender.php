@@ -2,6 +2,8 @@
 
 namespace Comoyi\Hall\Objects;
 
+use Comoyi\Hall\Exceptions\SendCmdDuplicateException;
+use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Objects\Send\SendHandler;
 
 /**
@@ -25,7 +27,8 @@ class Sender
      */
     protected $cmdMap = [
         // 内 => 外
-        'Pong' => 'Pong'
+//        CmdSend::PONG => 'Pong',
+//        CmdSend::GLOBAL_MESSAGE => 'GlobalMessage',
     ];
 
     /**
@@ -80,11 +83,17 @@ class Sender
     /**
      * 添加处理者
      *
-     * @param $alias
      * @param SendHandler $handler
+     * @throws SendCmdDuplicateException
      */
-    public function add($alias, SendHandler $handler)
+    public function add(SendHandler $handler)
     {
+        $alias = $handler->getCmd();
+        if (isset($this->handlers[$alias])) {
+            $currentClass = get_class($handler);
+            $class = get_class($this->handlers[$alias]);
+            throw new SendCmdDuplicateException("Send cmd duplicated [currentClass: {$currentClass}] [cmd: {$alias}] already used by [class: {$class}].");
+        }
         $this->handlers[$alias] = $handler;
     }
 
