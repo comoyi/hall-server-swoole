@@ -3,7 +3,7 @@
 namespace Comoyi\Hall\Handlers\Send;
 
 use Comoyi\Hall\Handlers\Send\SendHandler;
-use Comoyi\Hall\Cmd\CmdSend;
+use Comoyi\Hall\Cmd\ChatSendCmd;
 use Comoyi\Hall\Core\Msg;
 
 /**
@@ -15,7 +15,7 @@ class GlobalMessageHandler extends SendHandler
     /**
      * cmd
      */
-    protected $cmd = CmdSend::GLOBAL_MESSAGE;
+    protected $cmd = ChatSendCmd::GLOBAL_MESSAGE;
 
     /**
      * handle
@@ -27,7 +27,7 @@ class GlobalMessageHandler extends SendHandler
     {
         $server = container('server');
         $data = [
-            CmdSend::CMD => CmdSend::GLOBAL_MESSAGE,
+            ChatSendCmd::CMD => ChatSendCmd::GLOBAL_MESSAGE,
 //            CmdSend::CMD => container('sender')->getExternalCmd(CmdSend::GLOBAL_MESSAGE),
             'msg' => $msg->getData()['msg'],
         ];

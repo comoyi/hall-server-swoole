@@ -3,7 +3,7 @@
 namespace Comoyi\Hall\Core;
 
 use Comoyi\Hall\Exceptions\RecvCmdDuplicateException;
-use Comoyi\Hall\Cmd\CmdRecv;
+use Comoyi\Hall\Cmd\ChatRecvCmd;
 use Comoyi\Hall\Handlers\Recv\RecvHandler;
 
 /**
@@ -27,9 +27,9 @@ class Receiver
      */
     protected $cmdMap = [
         // 外 => 内
-//        'Ping' => CmdRecv::PING,
-//        'Login' => CmdRecv::LOGIN,
-        'GlobalMessage' => CmdRecv::GLOBAL_MESSAGE,
+//        'Ping' => ChatRecvCmd::PING,
+//        'Login' => ChatRecvCmd::LOGIN,
+        'GlobalMessage' => ChatRecvCmd::GLOBAL_MESSAGE,
     ];
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Comoyi\Hall\Core;
 
-use Comoyi\Hall\Cmd\CmdSend;
+use Comoyi\Hall\Cmd\ChatSendCmd;
 use Comoyi\Hall\Models\Message;
 use Comoyi\Hall\Task\SystemInfoTask;
 use Swoole\Websocket\Server as SwooleWebsocketServer;
@@ -94,7 +94,7 @@ class Gate
 
         foreach ($server->connections as $connection) {
             container('packet')->send($connection, [
-                'cmd' => CmdSend::GLOBAL_MESSAGE,
+                ChatSendCmd::CMD => ChatSendCmd::GLOBAL_MESSAGE,
                 'msg' => [
                     'type' => Message::TYPE_TEXT,
                     'content' => "client-{$request->fd} connected success.",
@@ -123,7 +123,7 @@ class Gate
 
         foreach ($server->connections as $connection) {
             container('packet')->send($connection, [
-                'cmd' => CmdSend::GLOBAL_MESSAGE,
+                ChatSendCmd::CMD => ChatSendCmd::GLOBAL_MESSAGE,
                 'msg' => [
                     'type' => Message::TYPE_TEXT,
                     'content' => "client-{$fd} closed.",

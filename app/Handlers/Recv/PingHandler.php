@@ -4,8 +4,8 @@ namespace Comoyi\Hall\Handlers\Recv;
 
 use Comoyi\Hall\Factory\SendMsgFactory;
 use Comoyi\Hall\Handlers\Recv\RecvHandler;
-use Comoyi\Hall\Cmd\CmdSend;
-use Comoyi\Hall\Cmd\CmdRecv;
+use Comoyi\Hall\Cmd\ChatSendCmd;
+use Comoyi\Hall\Cmd\ChatRecvCmd;
 use Comoyi\Hall\Core\Msg;
 
 /**
@@ -16,7 +16,7 @@ class PingHandler extends RecvHandler
     /**
      * cmd
      */
-    protected $cmd = CmdRecv::PING;
+    protected $cmd = ChatRecvCmd::PING;
 
     /**
      * handle
@@ -26,6 +26,6 @@ class PingHandler extends RecvHandler
      */
     public function handle(Msg $msg)
     {
-        container('sender')->handle(SendMsgFactory::create(CmdSend::PONG, [], $msg->getFd()));
+        container('sender')->handle(SendMsgFactory::create(ChatSendCmd::PONG, [], $msg->getFd()));
     }
 }

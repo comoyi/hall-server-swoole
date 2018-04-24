@@ -3,7 +3,7 @@
 namespace Comoyi\Hall\Core;
 
 use Comoyi\Hall\Exceptions\SendCmdDuplicateException;
-use Comoyi\Hall\Cmd\CmdSend;
+use Comoyi\Hall\Cmd\ChatSendCmd;
 use Comoyi\Hall\Handlers\Send\SendHandler;
 
 /**
@@ -27,8 +27,8 @@ class Sender
      */
     protected $cmdMap = [
         // 内 => 外
-//        CmdSend::PONG => 'Pong',
-//        CmdSend::GLOBAL_MESSAGE => 'GlobalMessage',
+//        ChatSendCmd::PONG => 'Pong',
+//        ChatSendCmd::GLOBAL_MESSAGE => 'GlobalMessage',
     ];
 
     /**

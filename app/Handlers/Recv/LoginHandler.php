@@ -5,8 +5,8 @@ namespace Comoyi\Hall\Handlers\Recv;
 use Comoyi\Hall\Factory\SendMsgFactory;
 use Comoyi\Hall\Handlers\Recv\RecvHandler;
 use Comoyi\Hall\Logic\UserLogic;
-use Comoyi\Hall\Cmd\CmdSend;
-use Comoyi\Hall\Cmd\CmdRecv;
+use Comoyi\Hall\Cmd\ChatSendCmd;
+use Comoyi\Hall\Cmd\ChatRecvCmd;
 use Comoyi\Hall\Models\Client;
 use Comoyi\Hall\Core\Msg;
 use Comoyi\Hall\Models\User;
@@ -19,7 +19,7 @@ class LoginHandler extends RecvHandler
     /**
      * cmd
      */
-    protected $cmd = CmdRecv::LOGIN;
+    protected $cmd = ChatRecvCmd::LOGIN;
 
     /**
      * handle
@@ -77,7 +77,7 @@ class LoginHandler extends RecvHandler
         $client->setUser($user);
         container('clientList')->add($client);
 
-        container('sender')->handle(SendMsgFactory::create(CmdSend::LOGIN, [
+        container('sender')->handle(SendMsgFactory::create(ChatSendCmd::LOGIN, [
             'code' => 0,
             'userID' => $userId,
             'token' => $token

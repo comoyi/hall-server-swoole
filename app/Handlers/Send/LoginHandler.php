@@ -3,7 +3,7 @@
 namespace Comoyi\Hall\Handlers\Send;
 
 use Comoyi\Hall\Handlers\Send\SendHandler;
-use Comoyi\Hall\Cmd\CmdSend;
+use Comoyi\Hall\Cmd\ChatSendCmd;
 use Comoyi\Hall\Core\Msg;
 
 /**
@@ -15,7 +15,7 @@ class LoginHandler extends SendHandler
     /**
      * cmd
      */
-    protected $cmd = CmdSend::LOGIN;
+    protected $cmd = ChatSendCmd::LOGIN;
 
     /**
      * handle
@@ -26,7 +26,7 @@ class LoginHandler extends SendHandler
     public function handle(Msg $msg)
     {
         $data = $msg->getData();
-        $data[CmdSend::CMD] = CmdSend::LOGIN;
+        $data[ChatSendCmd::CMD] = ChatSendCmd::LOGIN;
         container('packet')->send($msg->getFd(), $data);
     }
 }
