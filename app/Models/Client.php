@@ -1,6 +1,8 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Models;
+
+use Comoyi\Hall\Models\User;
 
 /**
  * 客户端

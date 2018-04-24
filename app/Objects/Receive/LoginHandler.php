@@ -6,9 +6,9 @@ use Comoyi\Hall\Factory\SendMsgFactory;
 use Comoyi\Hall\Logic\UserLogic;
 use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Models\CmdRecv;
-use Comoyi\Hall\Objects\Client;
+use Comoyi\Hall\Models\Client;
 use Comoyi\Hall\Objects\Msg;
-use Comoyi\Hall\Objects\User;
+use Comoyi\Hall\Models\User;
 
 /**
  * 登录

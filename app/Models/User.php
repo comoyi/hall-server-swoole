@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Models;
 
 /**
  * 用户
@@ -108,7 +108,7 @@ class User
     }
 
     /**
-     * @return null
+     * @return Client
      */
     public function getClient()
     {
@@ -116,7 +116,7 @@ class User
     }
 
     /**
-     * @param null $client
+     * @param Client $client
      */
     public function setClient($client)
     {
