@@ -1,8 +1,9 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Receive;
+namespace Comoyi\Hall\Handlers\Recv;
 
 use Comoyi\Hall\Factory\SendMsgFactory;
+use Comoyi\Hall\Handlers\Recv\RecvHandler;
 use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Models\CmdRecv;
 use Comoyi\Hall\Objects\Msg;
@@ -10,7 +11,7 @@ use Comoyi\Hall\Objects\Msg;
 /**
  * 世界喇叭
  */
-class GlobalMessageHandler extends ReceiveHandler
+class GlobalMessageHandler extends RecvHandler
 {
     /**
      * cmd

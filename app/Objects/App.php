@@ -34,16 +34,16 @@ class App
 
         // 接收处理
         $receiveHandlers = [
-            \Comoyi\Hall\Objects\Receive\PingHandler::class, // ping
-            \Comoyi\Hall\Objects\Receive\LoginHandler::class, // 登录
-            \Comoyi\Hall\Objects\Receive\GlobalMessageHandler::class, // 全局消息
+            \Comoyi\Hall\Handlers\Recv\PingHandler::class, // ping
+            \Comoyi\Hall\Handlers\Recv\LoginHandler::class, // 登录
+            \Comoyi\Hall\Handlers\Recv\GlobalMessageHandler::class, // 全局消息
         ];
 
         // 发送处理
         $sendHandlers = [
-            \Comoyi\Hall\Objects\Send\PongHandler::class, // pong
-            \Comoyi\Hall\Objects\Send\GlobalMessageHandler::class, // 全局消息
-            \Comoyi\Hall\Objects\Send\LoginHandler::class, // login
+            \Comoyi\Hall\Handlers\Send\PongHandler::class, // pong
+            \Comoyi\Hall\Handlers\Send\GlobalMessageHandler::class, // 全局消息
+            \Comoyi\Hall\Handlers\Send\LoginHandler::class, // login
         ];
 
 

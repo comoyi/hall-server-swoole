@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Send;
+namespace Comoyi\Hall\Handlers\Send;
 
 use Comoyi\Hall\Interfaces\SendMessageHandlerInterface;
 use Comoyi\Hall\Objects\Msg;

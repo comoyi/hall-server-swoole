@@ -4,7 +4,7 @@ namespace Comoyi\Hall\Objects;
 
 use Comoyi\Hall\Exceptions\RecvCmdDuplicateException;
 use Comoyi\Hall\Models\CmdRecv;
-use Comoyi\Hall\Objects\Receive\ReceiveHandler;
+use Comoyi\Hall\Handlers\Recv\RecvHandler;
 
 /**
  * 消息接收者
@@ -51,7 +51,7 @@ class Receiver
         $handler = $this->getHandler($msg->getCmd());
 
         // 判断cmd是否合法
-        if ($handler instanceof ReceiveHandler) {
+        if ($handler instanceof RecvHandler) {
             $handler->handle($msg);
         }
     }
@@ -60,7 +60,7 @@ class Receiver
      * 获取处理者
      *
      * @param $cmd
-     * @return ReceiveHandler
+     * @return RecvHandler
      */
     private function getHandler($cmd)
     {
@@ -74,10 +74,10 @@ class Receiver
     /**
      * 添加成员
      *
-     * @param ReceiveHandler $handler
+     * @param RecvHandler $handler
      * @throws RecvCmdDuplicateException
      */
-    public function add(ReceiveHandler $handler)
+    public function add(RecvHandler $handler)
     {
         $alias = $handler->getCmd();
         if (isset($this->handlers[$alias])) {

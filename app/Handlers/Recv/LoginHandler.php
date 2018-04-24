@@ -1,8 +1,9 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Receive;
+namespace Comoyi\Hall\Handlers\Recv;
 
 use Comoyi\Hall\Factory\SendMsgFactory;
+use Comoyi\Hall\Handlers\Recv\RecvHandler;
 use Comoyi\Hall\Logic\UserLogic;
 use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Models\CmdRecv;
@@ -13,7 +14,7 @@ use Comoyi\Hall\Models\User;
 /**
  * 登录
  */
-class LoginHandler extends ReceiveHandler
+class LoginHandler extends RecvHandler
 {
     /**
      * cmd

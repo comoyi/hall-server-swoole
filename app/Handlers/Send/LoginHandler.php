@@ -1,7 +1,8 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Send;
+namespace Comoyi\Hall\Handlers\Send;
 
+use Comoyi\Hall\Handlers\Send\SendHandler;
 use Comoyi\Hall\Models\CmdSend;
 use Comoyi\Hall\Objects\Msg;
 

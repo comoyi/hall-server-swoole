@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Receive;
+namespace Comoyi\Hall\Handlers\Recv;
 
 use Comoyi\Hall\Interfaces\ReceiveMessageHandlerInterface;
 use Comoyi\Hall\Objects\Msg;
@@ -8,7 +8,7 @@ use Comoyi\Hall\Objects\Msg;
 /**
  * 接收消息处理
  */
-abstract class ReceiveHandler implements ReceiveMessageHandlerInterface
+abstract class RecvHandler implements ReceiveMessageHandlerInterface
 {
 
     /**

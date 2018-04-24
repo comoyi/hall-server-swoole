@@ -4,7 +4,7 @@ namespace Comoyi\Hall\Objects;
 
 use Comoyi\Hall\Exceptions\SendCmdDuplicateException;
 use Comoyi\Hall\Models\CmdSend;
-use Comoyi\Hall\Objects\Send\SendHandler;
+use Comoyi\Hall\Handlers\Send\SendHandler;
 
 /**
  * 消息发送者
