@@ -28,7 +28,6 @@ class GlobalMessageHandler extends SendHandler
         $server = container('server');
         $data = [
             ChatSendCmd::CMD => ChatSendCmd::GLOBAL_MESSAGE,
-//            CmdSend::CMD => container('sender')->getExternalCmd(CmdSend::GLOBAL_MESSAGE),
             'msg' => $msg->getData()['msg'],
         ];
 
