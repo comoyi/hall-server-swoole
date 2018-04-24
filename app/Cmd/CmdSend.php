@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Models;
+namespace Comoyi\Hall\Cmd;
 
 class CmdSend
 {

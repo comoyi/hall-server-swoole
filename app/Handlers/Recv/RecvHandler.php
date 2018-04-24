@@ -3,7 +3,7 @@
 namespace Comoyi\Hall\Handlers\Recv;
 
 use Comoyi\Hall\Interfaces\ReceiveMessageHandlerInterface;
-use Comoyi\Hall\Objects\Msg;
+use Comoyi\Hall\Core\Msg;
 
 /**
  * 接收消息处理

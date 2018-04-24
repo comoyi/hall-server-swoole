@@ -1,8 +1,8 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Queue;
+namespace Comoyi\Hall\Core\Queue;
 
-use Comoyi\Hall\Objects\RedisManager;
+use Comoyi\Hall\Core\RedisManager;
 
 /**
  * redis消息队列

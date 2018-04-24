@@ -1,11 +1,11 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 /**
- * 接收消息
+ * 消息
  */
-class ReceiveMsg extends Msg
+class SendMsg extends Msg
 {
 
     /**
@@ -24,11 +24,11 @@ class ReceiveMsg extends Msg
     protected $data = [];
 
     /**
-     * ReceiveMsg constructor.
+     * SendMsg constructor.
      *
-     * @param $fd
      * @param $cmd
      * @param $data
+     * @param $fd
      */
     public function __construct($cmd = null, $data = null, $fd = null)
     {

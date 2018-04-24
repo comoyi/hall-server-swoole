@@ -3,7 +3,7 @@
 namespace Comoyi\Hall\Handlers\Send;
 
 use Comoyi\Hall\Interfaces\SendMessageHandlerInterface;
-use Comoyi\Hall\Objects\Msg;
+use Comoyi\Hall\Core\Msg;
 
 /**
  * 发送消息处理

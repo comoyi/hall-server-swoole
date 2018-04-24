@@ -1,9 +1,9 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 use Comoyi\Hall\Exceptions\RecvCmdDuplicateException;
-use Comoyi\Hall\Models\CmdRecv;
+use Comoyi\Hall\Cmd\CmdRecv;
 use Comoyi\Hall\Handlers\Recv\RecvHandler;
 
 /**

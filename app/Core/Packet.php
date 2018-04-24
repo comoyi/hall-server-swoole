@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 use Comoyi\Hall\Factory\ReceiveMsgFactory;
 

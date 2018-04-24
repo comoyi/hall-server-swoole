@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects\Queue;
+namespace Comoyi\Hall\Core\Queue;
 
 /**
  * 消息队列

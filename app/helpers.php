@@ -1,6 +1,6 @@
 <?php
 
-use Comoyi\Hall\Objects\Container;
+use Comoyi\Hall\Core\Container;
 
 /**
  * 获取配置

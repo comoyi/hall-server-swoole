@@ -1,11 +1,11 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 /**
  * 消息
  */
-class SendMsg extends Msg
+class Msg
 {
 
     /**
@@ -22,20 +22,6 @@ class SendMsg extends Msg
      * @var array
      */
     protected $data = [];
-
-    /**
-     * SendMsg constructor.
-     *
-     * @param $cmd
-     * @param $data
-     * @param $fd
-     */
-    public function __construct($cmd = null, $data = null, $fd = null)
-    {
-        $this->setCmd($cmd);
-        $this->setData($data);
-        $this->setFd($fd);
-    }
 
     /**
      * @return int
@@ -84,5 +70,6 @@ class SendMsg extends Msg
     {
         $this->data = $data;
     }
+
 
 }

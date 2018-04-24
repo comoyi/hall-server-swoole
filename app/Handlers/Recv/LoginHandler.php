@@ -5,10 +5,10 @@ namespace Comoyi\Hall\Handlers\Recv;
 use Comoyi\Hall\Factory\SendMsgFactory;
 use Comoyi\Hall\Handlers\Recv\RecvHandler;
 use Comoyi\Hall\Logic\UserLogic;
-use Comoyi\Hall\Models\CmdSend;
-use Comoyi\Hall\Models\CmdRecv;
+use Comoyi\Hall\Cmd\CmdSend;
+use Comoyi\Hall\Cmd\CmdRecv;
 use Comoyi\Hall\Models\Client;
-use Comoyi\Hall\Objects\Msg;
+use Comoyi\Hall\Core\Msg;
 use Comoyi\Hall\Models\User;
 
 /**

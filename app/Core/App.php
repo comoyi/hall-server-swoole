@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 use Comoyi\Hall\Config;
 use Comoyi\Hall\Env;
@@ -23,13 +23,13 @@ class App
         $classes = [
 
             // system
-            'packet' => \Comoyi\Hall\Objects\Packet::class, // 消息包
-            'receiver' => \Comoyi\Hall\Objects\Receiver::class, // 接收者
-            'sender' => \Comoyi\Hall\Objects\Sender::class, // 发送者
-            'gate' => \Comoyi\Hall\Objects\Gate::class, // 数据包网关
-            'sendQueue' => \Comoyi\Hall\Objects\SendQueue::class, // 发送队列
-            'receiveQueue' => \Comoyi\Hall\Objects\ReceiveQueue::class, // 接收队列
-            'redisQueue' => \Comoyi\Hall\Objects\Queue\RedisQueue::class, // redis消息队列
+            'packet' => \Comoyi\Hall\Core\Packet::class, // 消息包
+            'receiver' => \Comoyi\Hall\Core\Receiver::class, // 接收者
+            'sender' => \Comoyi\Hall\Core\Sender::class, // 发送者
+            'gate' => \Comoyi\Hall\Core\Gate::class, // 数据包网关
+            'sendQueue' => \Comoyi\Hall\Core\SendQueue::class, // 发送队列
+            'receiveQueue' => \Comoyi\Hall\Core\ReceiveQueue::class, // 接收队列
+            'redisQueue' => \Comoyi\Hall\Core\Queue\RedisQueue::class, // redis消息队列
         ];
 
         // 接收处理

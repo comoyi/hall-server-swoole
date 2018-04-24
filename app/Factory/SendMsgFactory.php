@@ -2,7 +2,7 @@
 
 namespace Comoyi\Hall\Factory;
 
-use Comoyi\Hall\Objects\SendMsg;
+use Comoyi\Hall\Core\SendMsg;
 
 /**
  * 发送消息工厂

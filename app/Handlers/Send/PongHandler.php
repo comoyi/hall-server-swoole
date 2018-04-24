@@ -3,8 +3,8 @@
 namespace Comoyi\Hall\Handlers\Send;
 
 use Comoyi\Hall\Handlers\Send\SendHandler;
-use Comoyi\Hall\Models\CmdSend;
-use Comoyi\Hall\Objects\Msg;
+use Comoyi\Hall\Cmd\CmdSend;
+use Comoyi\Hall\Core\Msg;
 
 /**
  * pong

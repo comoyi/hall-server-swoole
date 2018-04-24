@@ -1,8 +1,8 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
-use Comoyi\Hall\Models\CmdSend;
+use Comoyi\Hall\Cmd\CmdSend;
 use Comoyi\Hall\Models\Message;
 use Comoyi\Hall\Task\SystemInfoTask;
 use Swoole\Websocket\Server as SwooleWebsocketServer;

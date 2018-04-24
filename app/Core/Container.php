@@ -1,6 +1,6 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 /**
  * 程序对象容器 important!

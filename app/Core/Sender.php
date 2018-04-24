@@ -1,9 +1,9 @@
 <?php
 
-namespace Comoyi\Hall\Objects;
+namespace Comoyi\Hall\Core;
 
 use Comoyi\Hall\Exceptions\SendCmdDuplicateException;
-use Comoyi\Hall\Models\CmdSend;
+use Comoyi\Hall\Cmd\CmdSend;
 use Comoyi\Hall\Handlers\Send\SendHandler;
 
 /**
@@ -35,7 +35,6 @@ class Sender
      * 处理
      *
      * @param Msg $msg
-     * @internal param $data
      */
     public function handle(Msg $msg)
     {
