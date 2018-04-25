@@ -12,4 +12,8 @@ class ChatRecvCmd extends Cmd
     const PING = 1;
     const LOGIN = 2;
     const GLOBAL_MESSAGE = 3;
+    const CREATE_ROOM = 4;
+    const ROOM_LIST = 5;
+    const ENTER_ROOM = 6;
+    const EXIT_ROOM = 7;
 }

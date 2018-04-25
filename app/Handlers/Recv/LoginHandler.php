@@ -51,17 +51,13 @@ class LoginHandler extends RecvHandler
         // 创建用户对象
         $user = new User();
         $user->setId($userId);
-        container('userList')->addUser($user);
+        container('userList')->add($user);
 
         // 生成用户对应token
         $token = uniqid();
         // 存储token与用户对应关系
         $redisKey = 'token:user_id:' . $userId;
         $redis = container('redis');
-
-        // 先移除改用户之前已经存在多token信息防止redis中垃圾太多
-        $oldToken = $redis->hGet($redisKey, 'token');
-        $redis->del($oldToken);
 
         $redis->hMSet($redisKey, [
             'token' => $token,

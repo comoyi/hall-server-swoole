@@ -66,6 +66,11 @@ class Receiver
     {
         $internalCmd = isset($this->cmdMap[$cmd]) ? $this->cmdMap[$cmd] : $cmd;
         if (!isset($this->handlers[$internalCmd])) {
+//            $class = "\\Comoyi\\Hall\\Handlers\\Recv\\{$internalCmd}Handler";
+//            $handler = new $class;
+//            if ($handler instanceof RecvHandler) {
+//                return $handler;
+//            }
             return null;
         }
         return $this->handlers[$internalCmd];

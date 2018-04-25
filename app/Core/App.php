@@ -30,6 +30,10 @@ class App
             'sendQueue' => \Comoyi\Hall\Core\SendQueue::class, // 发送队列
             'receiveQueue' => \Comoyi\Hall\Core\ReceiveQueue::class, // 接收队列
             'redisQueue' => \Comoyi\Hall\Core\Queue\RedisQueue::class, // redis消息队列
+
+            'userList' => \Comoyi\Hall\Models\UserList::class, // 用户列表
+            'clientList' => \Comoyi\Hall\Models\ClientList::class, // 用户列表
+            'roomList' => \Comoyi\Hall\Models\RoomList::class, // room列表
         ];
 
         // 接收处理
@@ -37,6 +41,10 @@ class App
             \Comoyi\Hall\Handlers\Recv\PingHandler::class, // ping
             \Comoyi\Hall\Handlers\Recv\LoginHandler::class, // 登录
             \Comoyi\Hall\Handlers\Recv\GlobalMessageHandler::class, // 全局消息
+            \Comoyi\Hall\Handlers\Recv\CreateRoomHandler::class, // 创建房间
+            \Comoyi\Hall\Handlers\Recv\RoomListHandler::class, // 所有房间列表
+            \Comoyi\Hall\Handlers\Recv\EnterRoomHandler::class, // 进入房间
+            \Comoyi\Hall\Handlers\Recv\ExitRoomHandler::class, // 离开房间
         ];
 
         // 发送处理
