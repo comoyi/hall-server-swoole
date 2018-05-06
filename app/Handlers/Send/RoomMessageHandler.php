@@ -25,7 +25,6 @@ class RoomMessageHandler extends SendHandler
      */
     public function handle(Msg $msg)
     {
-        $server = container('server');
         $data = [
             ChatSendCmd::CMD => ChatSendCmd::ROOM_MESSAGE,
             'msg' => $msg->getData()['msg'],
