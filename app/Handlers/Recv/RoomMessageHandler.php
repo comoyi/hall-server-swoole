@@ -16,7 +16,7 @@ class RoomMessageHandler extends RecvHandler
     /**
      * cmd
      */
-    protected $cmd = ChatRecvCmd::ENTER_ROOM;
+    protected $cmd = ChatRecvCmd::ROOM_MESSAGE;
 
     /**
      * handle
@@ -33,17 +33,13 @@ class RoomMessageHandler extends RecvHandler
 
         $roomId = $msg->getData()['room_id'];
 
-        // 获取用户
-        $userList = container('userList');
-        $user = $userList->getUserById($user->getId());
-
         // 获取房间
         $roomList = container('roomList');
         $room = $roomList->getRoomById($roomId);
-        $room->addUser($user);
 
-        container('sender')->handle(SendMsgFactory::create(ChatSendCmd::GLOBAL_MESSAGE, [
-            'msg' => "enter room [room id: {$room->getId()}], [room users" . json_encode($room->getUsers()) . ']',
+        container('sender')->handle(SendMsgFactory::create(ChatSendCmd::ROOM_MESSAGE, [
+            'msg' => "room message [room id: {$room->getId()}], [sender user id: {$user->getId()}], [room users" . json_encode($room->getUsers()) . ']',
+            'room_id' => $room->getId(),
         ], $msg->getFd()));
     }
 }

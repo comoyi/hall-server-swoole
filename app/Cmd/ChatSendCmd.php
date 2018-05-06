@@ -12,4 +12,5 @@ class ChatSendCmd extends Cmd
     const PONG = 1;
     const LOGIN = 2;
     const GLOBAL_MESSAGE = 3;
+    const ROOM_MESSAGE = 8;
 }

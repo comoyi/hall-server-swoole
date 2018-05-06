@@ -45,6 +45,7 @@ class App
             \Comoyi\Hall\Handlers\Recv\RoomListHandler::class, // 所有房间列表
             \Comoyi\Hall\Handlers\Recv\EnterRoomHandler::class, // 进入房间
             \Comoyi\Hall\Handlers\Recv\ExitRoomHandler::class, // 离开房间
+            \Comoyi\Hall\Handlers\Recv\RoomMessageHandler::class, // 房间消息
         ];
 
         // 发送处理
@@ -52,6 +53,7 @@ class App
             \Comoyi\Hall\Handlers\Send\PongHandler::class, // pong
             \Comoyi\Hall\Handlers\Send\GlobalMessageHandler::class, // 全局消息
             \Comoyi\Hall\Handlers\Send\LoginHandler::class, // login
+            \Comoyi\Hall\Handlers\Send\RoomMessageHandler::class, // 房间消息
         ];
 
 
