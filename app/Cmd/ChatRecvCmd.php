@@ -16,4 +16,5 @@ class ChatRecvCmd extends Cmd
     const ROOM_LIST = 5;
     const ENTER_ROOM = 6;
     const EXIT_ROOM = 7;
+    const ROOM_MESSAGE = 8;
 }

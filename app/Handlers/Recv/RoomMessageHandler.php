@@ -9,9 +9,9 @@ use Comoyi\Hall\Cmd\ChatRecvCmd;
 use Comoyi\Hall\Core\Msg;
 
 /**
- * 进入房间
+ * 房间聊天
  */
-class EnterRoomHandler extends RecvHandler
+class RoomMessageHandler extends RecvHandler
 {
     /**
      * cmd

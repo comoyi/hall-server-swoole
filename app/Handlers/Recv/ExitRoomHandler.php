@@ -26,12 +26,16 @@ class ExitRoomHandler extends RecvHandler
      */
     public function handle(Msg $msg)
     {
+        $fd = $msg->getFd();
+        $clientList = container('clientList');
+        $client = $clientList->getClientById($fd);
+        $user = $client->getUser();
+
         $roomId = $msg->getData()['room_id'];
-        $userId = $msg->getData()['user_id'];
 
         // 获取用户
         $userList = container('userList');
-        $user = $userList->getUserById($userId);
+        $user = $userList->getUserById($user->getId());
 
         // 获取房间
         $roomList = container('roomList');
