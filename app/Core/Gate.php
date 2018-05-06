@@ -25,7 +25,7 @@ class Gate
 
         // 设置task worker 数量
         $server->set([
-            'worker_num' => 3,
+            'worker_num' => 1,
             'task_worker_num' => 5,
         ]);
 
