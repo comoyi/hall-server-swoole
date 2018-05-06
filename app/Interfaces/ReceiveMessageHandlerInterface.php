@@ -2,7 +2,7 @@
 
 namespace Comoyi\Hall\Interfaces;
 
-use Comoyi\Hall\Objects\Msg;
+use Comoyi\Hall\Core\Msg;
 
 /**
  * 消息处理

@@ -1,6 +1,6 @@
 <?php
 
-use Comoyi\Hall\Objects\App;
+use Comoyi\Hall\Core\App;
 
 $app = new App();
 

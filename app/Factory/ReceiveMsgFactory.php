@@ -2,7 +2,7 @@
 
 namespace Comoyi\Hall\Factory;
 
-use Comoyi\Hall\Objects\ReceiveMsg;
+use Comoyi\Hall\Core\ReceiveMsg;
 
 /**
  * 接收消息工厂

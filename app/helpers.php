@@ -1,6 +1,6 @@
 <?php
 
-use Comoyi\Hall\Objects\Container;
+use Comoyi\Hall\Core\Container;
 
 /**
  * 获取配置
@@ -24,6 +24,7 @@ function config($key = null, $default = null)
 }
 
 /**
+ * // TODO 这种方式存取对象编辑器支持不友好
  * 获取/设置 容器内对象
  *
  * @param $alias
